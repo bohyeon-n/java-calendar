@@ -13,4 +13,3 @@ public class Sum {
         myobj.close();
     }
 }
-c
