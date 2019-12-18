@@ -27,30 +27,33 @@ public class Calendar {
         System.out.println("25 26 27  28  29  30 31  32");
     }
 
+    /**
+     *
+     * @param week
+     * @return 0 ~ 6(0 = Monday , 6 = Sunday)
+     */
+
+    public int parseDay(String week) {
+        switch(week) {
+            case "TU":
+                return 1;
+            case "WE":
+                return 2;
+            case "TH":
+                return 3;
+            case "FR":
+                return 4;
+            case "SA":
+                return 5;
+            case  "SU":
+                return 6;
+            default: return 0;
+        }
+    }
+
     public void printCalendar(int year, int month, String day) {
         int lastDays = getMaxDaysOfMonth(year, month);
-        int firstDay = 0;
-        switch(day) {
-            case "TU":
-                firstDay = 1;
-                break;
-            case "WE":
-                firstDay = 2;
-                break;
-            case "TH":
-                firstDay = 3;
-                break;
-            case "FR":
-                firstDay = 4;
-                break;
-            case "SA":
-                firstDay = 5;
-                break;
-            case  "SU":
-                firstDay = 6;
-                break;
-        }
-
+        int firstDay = parseDay(day);
         int days [] = new int[lastDays + firstDay];
         for(int i = 0; i < firstDay;i++) {
             days[i] = 0;
