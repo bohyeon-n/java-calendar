@@ -16,6 +16,9 @@ public class Prompt {
             System.out.println("달을 입력하세요.");
             System.out.println("MONTH> ");
             int month = scanner.nextInt();
+            System.out.println("달의 시작 요일을 입력하세요.");
+            System.out.println("DAY> ");
+            String day = scanner.next();
             if(month == -1) {
                 break;
             }
@@ -23,7 +26,7 @@ public class Prompt {
                 continue;
             }
 
-            cal.printCalendar(year, month);
+            cal.printCalendar(year, month, day);
         }
         System.out.println("bye~");
         scanner.close();

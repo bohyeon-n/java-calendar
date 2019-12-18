@@ -27,11 +27,36 @@ public class Calendar {
         System.out.println("25 26 27  28  29  30 31  32");
     }
 
-    public void printCalendar(int year, int month) {
+    public void printCalendar(int year, int month, String day) {
         int lastDays = getMaxDaysOfMonth(year, month);
-        int days [] = new int[lastDays];
-        for(int i = 0; i < days.length; i++) {
-            days[i] = i+ 1;
+        int firstDay = 0;
+        switch(day) {
+            case "TU":
+                firstDay = 1;
+                break;
+            case "WE":
+                firstDay = 2;
+                break;
+            case "TH":
+                firstDay = 3;
+                break;
+            case "FR":
+                firstDay = 4;
+                break;
+            case "SA":
+                firstDay = 5;
+                break;
+            case  "SU":
+                firstDay = 6;
+                break;
+        }
+
+        int days [] = new int[lastDays + firstDay];
+        for(int i = 0; i < firstDay;i++) {
+            days[i] = 0;
+        }
+        for(int i = firstDay; i < days.length; i++) {
+            days[i] = i+ 1 - firstDay;
         }
         int week = lastDays / 7;
         if(week % 7 != 0) {
@@ -48,6 +73,8 @@ public class Calendar {
             for(int j = 0; j < weekDays[i].length; j++) {
                 if(weekDays[i][j] != 0) {
                     weekString += weekDays[i][j] + " ";
+                }else {
+                    weekString   += "  ";
                 }
             }
             System.out.printf(" %s", weekString);
