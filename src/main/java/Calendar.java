@@ -9,7 +9,7 @@ public class Calendar {
     }
 
     public void printSampleCalendar() {
-        System.out.println(" 일 월 화 수 목 금 토 일");
+        System.out.println(" MO TU WE TU FR SA SU");
         System.out.println("----------------------------");
         System.out.println(" 1  2  3   4   5   6  7   8");
         System.out.println(" 9 10 11  12  13  14 15  16");
@@ -17,7 +17,8 @@ public class Calendar {
         System.out.println("25 26 27  28  29  30 31  32");
     }
 
-    public void printCalendar( int lastDays) {
+    public void printCalendar( int month) {
+        int lastDays = getMaxDaysOfMonth(month);
         int days [] = new int[lastDays];
         for(int i = 0; i < days.length; i++) {
             days[i] = i+ 1;
@@ -41,29 +42,5 @@ public class Calendar {
             }
             System.out.println(weekString);
         }
-    }
-
-    public static void main(String[] args) {
-        // 숫자를 입력받아 해당하는 달의 최대 일수를 출력하는
-        Scanner  scanner = new Scanner(System.in);
-        Calendar cal = new Calendar();
-        String PROMPT = "cal> ";
-
-        while(true) {
-            System.out.println("달을 입력하세요.");
-            System.out.println(PROMPT);
-            int month = scanner.nextInt();
-            if(month == -1) {
-               break;
-            }
-            if(month > 12) {
-                continue;
-            }
-           int daysOfMonth = cal.getMaxDaysOfMonth(month);
-            System.out.printf("\n%d 월은 %d 일까지 있습니다. \n", month, daysOfMonth);
-            cal.printCalendar(daysOfMonth);
-        }
-        System.out.println("bye~");
-        scanner.close();
     }
 }
