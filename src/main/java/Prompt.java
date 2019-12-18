@@ -9,10 +9,12 @@ public class Prompt {
         Scanner scanner = new Scanner(System.in);
         Calendar cal = new Calendar();
         String PROMPT = "cal> ";
-
         while(true) {
+            System.out.println("년을 입력하세요.");
+            System.out.println("YEAR> ");
+            int year = scanner.nextInt();
             System.out.println("달을 입력하세요.");
-            System.out.println(PROMPT);
+            System.out.println("MONTH> ");
             int month = scanner.nextInt();
             if(month == -1) {
                 break;
@@ -21,11 +23,12 @@ public class Prompt {
                 continue;
             }
 
-            cal.printCalendar(month);
+            cal.printCalendar(year, month);
         }
         System.out.println("bye~");
         scanner.close();
     }
+
     public static void main(String args[]) {
        Prompt prompt = new Prompt();
        prompt.runPrompt();
