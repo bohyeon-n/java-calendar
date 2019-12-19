@@ -1,21 +1,25 @@
+import javax.swing.*;
 import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Calendar {
-    private static final int[] MAX_DAYS =  {31, 28, 31, 30,31,30, 31, 31, 30, 31, 30, 31 };
-    private static final int[] LEAP_MAX_DAYS = {31, 29, 31, 30,31,30, 31, 31, 30, 31, 30, 31 };
-    public boolean isLeapYear(int year) {
+
+    private static final int[] MAX_DAYS =  {0, 31, 28, 31, 30,31,30, 31, 31, 30, 31, 30, 31 };
+    private static final int[] LEAP_MAX_DAYS = {0, 31, 29, 31, 30,31,30, 31, 31, 30, 31, 30, 31 };
+
+    public static boolean  isLeapYear(int year) {
         if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0) ) {
             return true;
         }
         return false;
     }
-    public int getMaxDaysOfMonth(int year, int month) {
+
+    public static int getMaxDaysOfMonth(int year, int month) {
         if(isLeapYear(year)) {
-            return LEAP_MAX_DAYS[month-1];
+            return LEAP_MAX_DAYS[month];
         }
-        return MAX_DAYS[month -1 ];
+        return MAX_DAYS[month];
     }
 
     public void printSampleCalendar() {
@@ -27,39 +31,36 @@ public class Calendar {
         System.out.println("25 26 27  28  29  30 31  32");
     }
 
-    /**
-     *
-     * @param week
-     * @return 0 ~ 6(0 = Monday , 6 = Sunday)
-     */
+    public static int getWeekDay(int year, int month) {
+        int count = 0;
+        final int  sYear = 1970;
+        final int sWeekDay = 4;
 
-    public int parseDay(String week) {
-        switch(week) {
-            case "TU":
-                return 1;
-            case "WE":
-                return 2;
-            case "TH":
-                return 3;
-            case "FR":
-                return 4;
-            case "SA":
-                return 5;
-            case  "SU":
-                return 6;
-            default: return 0;
+        for(int i = sYear; i < year; i++) {
+            boolean isLeapYear = isLeapYear(i);
+            System.out.println(isLeapYear ? "윤년" : "윤년 아님");
+            count += isLeapYear ? 366 : 365;
         }
+        for(int i = 1; i < month; i++) {
+            int delta = getMaxDaysOfMonth(year, i);
+            count += delta;
+        }
+        System.out.println(count);
+        int weekDay  = (count + sWeekDay) % 7;
+        System.out.println(weekDay);
+        return weekDay;
     }
 
-    public void printCalendar(int year, int month, String day) {
+    public void printCalendar(int year, int month) {
         int lastDays = getMaxDaysOfMonth(year, month);
-        int firstDay = parseDay(day);
-        int days [] = new int[lastDays + firstDay];
-        for(int i = 0; i < firstDay;i++) {
+        int weekDay = getWeekDay(year , month);
+
+        int days [] = new int[lastDays + weekDay];
+        for(int i = 0; i < weekDay;i++) {
             days[i] = 0;
         }
-        for(int i = firstDay; i < days.length; i++) {
-            days[i] = i+ 1 - firstDay;
+        for(int i = weekDay; i < days.length; i++) {
+            days[i] = i+ 1 - weekDay;
         }
         int week = lastDays / 7;
         if(week % 7 != 0) {
@@ -69,7 +70,7 @@ public class Calendar {
         for(int i = 0; i < week; i++) {
            weekDays[i] = Arrays.copyOfRange(days, i *7, (i +1) * 7);
         }
-        System.out.println(" MO TU WE TH FR SA SU");
+        System.out.println(" SU MO TU WE TH FR SA ");
         System.out.println("----------------------------");
         for(int i = 0; i < weekDays.length; i++) {
             String weekString = "";
