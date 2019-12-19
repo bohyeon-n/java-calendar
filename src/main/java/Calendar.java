@@ -38,16 +38,13 @@ public class Calendar {
 
         for(int i = sYear; i < year; i++) {
             boolean isLeapYear = isLeapYear(i);
-            System.out.println(isLeapYear ? "윤년" : "윤년 아님");
             count += isLeapYear ? 366 : 365;
         }
         for(int i = 1; i < month; i++) {
             int delta = getMaxDaysOfMonth(year, i);
             count += delta;
         }
-        System.out.println(count);
         int weekDay  = (count + sWeekDay) % 7;
-        System.out.println(weekDay);
         return weekDay;
     }
 
