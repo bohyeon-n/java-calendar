@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c6ecb812-3a76-47ba-b201-57adad182e14" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/AddScheduleCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Schedule.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ScheduleCommand.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/PromptTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ScheduleTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/META-INF/calendar.kotlin_module" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Calendar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Calendar.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AddScheduleCommand.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AddScheduleCommand.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Prompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Prompt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Calendar.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Calendar.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Schedule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Schedule.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,7 +133,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1576575699419</updated>
-      <workItem from="1576575700983" duration="36948000" />
+      <workItem from="1576575700983" duration="37774000" />
     </task>
     <servers />
   </component>
@@ -213,15 +205,5 @@
       <screen x="0" y="23" width="1440" height="817" />
     </state>
     <state x="385" y="196" key="search.everywhere.popup/0.23.1440.817@0.23.1440.817" timestamp="1576576377299" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/AddScheduleCommand.java</url>
-          <option name="timeStamp" value="2" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

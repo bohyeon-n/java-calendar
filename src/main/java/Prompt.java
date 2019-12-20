@@ -56,11 +56,6 @@ public class Prompt {
         System.out.println("검색 날짜를 입력하세요 예) yyyy-mm-dd");
         System.out.printf("DATE> ");
         String date = this.scanner.next();
-        if (!isValidDateFormat(date)) {
-            System.out.println("형식에 맞게 입력해주세요. 예) 2019-12-01");
-            return;
-        }
-
         if (schedule.existSchedules(date)) {
             System.out.println(schedule.searchSchedule(date));
         } else {
@@ -77,26 +72,8 @@ public class Prompt {
         this.scanner.nextLine();
         String todo = this.scanner.nextLine();
         System.out.println(todo);
+        this.schedule.addSchedule(date, todo);
 
-        if (isValidDateFormat(date)) {
-            this.schedule.addSchedule(date, todo);
-        } else {
-            System.out.print("잘못 입력하셨습니다.");
-        }
-    }
-
-    public boolean isValidDateFormat(String date) {
-        String[] splitDate = date.split("-");
-        if (splitDate.length != 3) {
-            return false;
-        }
-        int year = Integer.parseInt(splitDate[0]);
-        int month = Integer.parseInt(splitDate[1]);
-        int day = Integer.parseInt(splitDate[2]);
-        boolean isValidYear = splitDate[0].length() == 4 && year >= 1970;
-        boolean isValidMonth = month > 0 && month <= 12;
-        boolean isValidDay = day > 0 && day <= 31;
-        return isValidYear && isValidMonth && isValidDay;
     }
 
     public void runCalendarPrompt() {

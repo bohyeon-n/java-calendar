@@ -27,4 +27,19 @@ public class Schedule {
     public boolean existSchedules(String date) {
         return this.schedules.containsKey(date);
     }
+
+    public boolean isValidDateFormat(String date) {
+        String[] splitDate = date.split("-");
+        if (splitDate.length != 3) {
+            return false;
+        }
+        int year = Integer.parseInt(splitDate[0]);
+        int month = Integer.parseInt(splitDate[1]);
+        int day = Integer.parseInt(splitDate[2]);
+        boolean isValidYear = splitDate[0].length() == 4 && year >= 1970;
+        boolean isValidMonth = month > 0 && month <= 12;
+        boolean isValidDay = day > 0 && day <= 31;
+        return isValidYear && isValidMonth && isValidDay;
+    }
+
 }
