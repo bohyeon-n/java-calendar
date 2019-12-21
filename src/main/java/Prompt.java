@@ -34,7 +34,7 @@ public class Prompt {
             case "1":
                 return new AddScheduleCommand();
             case "2":
-
+                return new SearchScheduleCommand();
             case "3":
                 runCalendarPrompt();
                 break;
@@ -102,8 +102,4 @@ public class Prompt {
         this.scanner.close();
     }
 
-    public static void main(String args[]) {
-        Prompt prompt = new Prompt();
-//        prompt.runMenuPrompt();
-    }
 }
