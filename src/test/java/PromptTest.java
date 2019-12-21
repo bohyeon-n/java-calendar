@@ -22,7 +22,7 @@ public class PromptTest {
     public void testValidateDateFormat() {
        ScheduleCommand command =  this.prompt.runMenuPrompt("1");
        String todo = "check date format";
-       String date = "2019-1-10";
+       String date = "2019-01-1";
        String [] args = {date, todo};
        command.input(args, this.schedule);
     }

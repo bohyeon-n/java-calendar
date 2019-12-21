@@ -44,7 +44,7 @@ public class Schedule {
         if (splitDate.length != 3) {
             return false;
         }
-        if(splitDate[0].length() != 4  || splitDate[1].length() != 2 || splitDate[2].length() != 3) {
+        if(splitDate[0].length() != 4  || splitDate[1].length() != 2 || splitDate[2].length() != 2) {
             return false;
         }
 

@@ -7,7 +7,8 @@ public class Calendar {
 
     private static final int[] MAX_DAYS =  {0, 31, 28, 31, 30,31,30, 31, 31, 30, 31, 30, 31 };
     private static final int[] LEAP_MAX_DAYS = {0, 31, 29, 31, 30,31,30, 31, 31, 30, 31, 30, 31 };
-
+    private static final String ANSI_RED = "\u001B[31m";
+    private static final String ANSI_RESET = "\u001B[0m";
     public static boolean  isLeapYear(int year) {
         if (year % 4 == 0 && (year % 100 != 0 || year % 400 == 0) ) {
             return true;
@@ -48,7 +49,7 @@ public class Calendar {
         return weekDay;
     }
 
-    public void printCalendar(int year, int month) {
+    public void printCalendar(int year, int month, Schedule schedule) {
         int lastDays = getMaxDaysOfMonth(year, month);
         int weekDay = getWeekDay(year , month);
 
@@ -73,7 +74,14 @@ public class Calendar {
             String weekString = "";
             for(int j = 0; j < weekDays[i].length; j++) {
                 if(weekDays[i][j] != 0) {
-                    weekString += weekDays[i][j] + " ";
+                    weekString += weekDays[i][j];
+                    String dateFormat = year + "-" + String.format("%02d", month) + "-" + String.format("%02d", weekDays[i][j]);
+
+                    if(schedule.existSchedules(dateFormat)) {
+                        weekString += ANSI_RESET +  ANSI_RED +  "*" + ANSI_RED + ANSI_RESET;
+                    }else {
+                        weekString += " ";
+                    }
                 }else {
                     weekString   += "  ";
                 }
