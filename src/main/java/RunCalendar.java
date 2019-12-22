@@ -1,20 +1,39 @@
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
-
+import java.io.File;
 public class RunCalendar {
     private Scanner scanner;
     private Schedule schedule;
-
+    private static final String SAVE_FILE = "calendar.dat";
 
     public RunCalendar() {
         this.scanner = new Scanner(System.in);
         this.schedule = new Schedule();
+        File f=  new File(SAVE_FILE);
+        if(!f.exists()) {
+            return;
+        }
+        try {
+            Scanner s = new Scanner(f);
+            String fileString =  s.toString();
+            System.out.println(fileString);
+            while(s.hasNextLine()) {
+                String line = s.nextLine();
+                String [] splitline = line.split(",");
+                this.schedule.initSchedule(splitline[0] , splitline[1]);
+            }
+            s.close();
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
     public void addSchedule(ScheduleCommand cmd) {
-
         System.out.println("[일정 등록] 날짜를 입력하세요.");
         System.out.printf("> ");
         System.out.println();
@@ -27,13 +46,14 @@ public class RunCalendar {
     }
 
     public void searchSchedule(ScheduleCommand cmd) {
+        System.out.println(this.schedule);
         System.out.println("검색 날짜를 입력하세요 예) yyyy-mm-dd");
         System.out.printf("DATE> ");
         String date = this.scanner.nextLine().trim();
         String[] args = {date};
         Map<String, List<String>> res = cmd.input(args, schedule);
         List<String> todos = res.get(date);
-
+        System.out.println(todos);
         if (!todos.isEmpty()) {
             System.out.println(todos
                     .size() + "개의 일정이 있습니다.");
